@@ -1,0 +1,47 @@
+import { StyleSheet } from "react-native"
+export default StyleSheet.create({
+    viewMaquinas: {
+        backgroundColor: 'white',
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+    },
+    image: {
+        width: '90%',
+        height: 200,
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 10,
+    },
+    scrollMaquinas: {
+        padding: 10,
+        marginBottom: 20,
+        width: '100%',
+    },
+    grid: {
+        width: '80%',
+        height: 300,
+        alignItems: 'center',
+        borderWidth: 2,
+        borderRadius: 25,
+        padding: 5,
+        marginTop: 10,
+        marginBottom: 20,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+    },
+    info: {
+        flexDirection: 'row',
+        height: 25,
+        padding: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    containerMaquinas: {
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+    },
+})
