@@ -15,8 +15,8 @@ import {
 } from "react-native";
 
 
-function dados (){
-    let user = [['gustavo','12345'],['vinelo','123456789']];
+function dados() {
+  let user = [['gustavo', '12345'], ['vinelo', '123456789']];
 }
 
 function Login({ navigation }) {
@@ -48,34 +48,22 @@ function Login({ navigation }) {
         <View style={estilos.LoginStyle.loginViewGrey}>
           <Text style={estilos.LoginStyle.loginLabelInput}>Usuário</Text>
           <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "#eee",
-            }}
-          >
+            style={estilos.LoginStyle.rowIcon}>
             <Image
               source={require("./assets/imagens/email.png")}
-              style={estilos.LoginStyle.loginImageInput}
-            ></Image>
+              style={estilos.LoginStyle.loginImageInput}>
+            </Image>
             <TextInput
-              style={[estilos.LoginStyle.loginInp, { flex: 1 }]}
+              style={estilos.LoginStyle.loginInp}
               placeholder="Usuario"
             ></TextInput>
           </View>
           <Text style={estilos.LoginStyle.loginLabelInput}>Senha</Text>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <View style={estilos.LoginStyle.rowIcon}>
             <Image
               source={require("./assets/imagens/senha.png")}
-              style={estilos.LoginStyle.loginImageInput}
-            ></Image>
+              style={estilos.LoginStyle.loginImageInput}>
+            </Image>
 
             <TextInput
               style={estilos.LoginStyle.loginInp}
@@ -104,15 +92,15 @@ function Login({ navigation }) {
           </View>
         </View>
         <TouchableHighlight
-        onPress={() => navigation.navigate("Home")}
-        style={estilos.LoginStyle.underline}
+          onPress={() => navigation.navigate("Home")}
+          style={estilos.LoginStyle.underline}
         >
-         
-        <Text style={estilos.LoginStyle.underline}
-          
-        >
-          Criar Conta
-        </Text>
+
+          <Text style={estilos.LoginStyle.underline}
+
+          >
+            Criar Conta
+          </Text>
         </TouchableHighlight>
       </View>
     </View>

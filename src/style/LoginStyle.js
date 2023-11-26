@@ -1,22 +1,22 @@
 import { StyleSheet } from "react-native"
- export default StyleSheet.create({
-// INICIO TELA DE LOGIN ------------------------------------------------------------------------------------------------
-fundo: {
-  flexGrow: 1,
-  resizeMode: "cover",
-  justifyContent: "center",
-  alignItems: "center",
-  opacity: 1,
-  width: "100%",
-  height: "100%",
-},
-viewLoginTopo: {
+export default StyleSheet.create({
+  // INICIO TELA DE LOGIN ------------------------------------------------------------------------------------------------
+  fundo: {
+    flexGrow: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    alignItems: "center",
+    opacity: 1,
+    width: "100%",
+    height: "100%",
+  },
+  viewLoginTopo: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
     marginLeft: 30,
-    flex:0.5
+    flex: 0.5
 
   },
   loginLabel: {
@@ -70,6 +70,12 @@ viewLoginTopo: {
     padding: 10,
     borderWidth: 1,
     borderRadius: 10,
+  },
+  rowIcon: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#eee",
   },
   botaoConfirma: {
     minWidth: 140,
