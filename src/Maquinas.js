@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import Header from "./Header";
 
-function Maquinas({navigation}) {
+function Maquinas({ navigation }) {
   return (
     <View style={estilos.MaquinaStyle.viewMaquinas}>
       <Header navigation={navigation} />
@@ -29,7 +29,19 @@ function Maquinas({navigation}) {
               source={require("./assets/imagens/cortadora.jpg")}
               resizeMode="contain"
             />
-            <Text>Cortadora e Gravadora a laser</Text>
+            <Text style={estilos.MaquinaStyle.title}>Cortadora e Gravadora a laser</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={estilos.MaquinaStyle.grid}>
             <Image

@@ -44,4 +44,28 @@ export default StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
     },
+    title:{
+        fontSize:18,
+        fontWeight:'600',
+        color:'black'
+    },
+    rowContainer:{
+        flexDirection:'row',
+    },
+    subTitle:{
+        color:'blue',
+        fontSize:15,
+        fontWeight:'500',
+    },
+    botoes:{
+        width:100,
+        height:50,
+        marginTop:10,
+        borderWidth:1.5,
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:15,
+        backgroundColor:'#dddddd',
+        marginHorizontal:10
+    }
 })

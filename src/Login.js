@@ -103,12 +103,17 @@ function Login({ navigation }) {
             </TouchableOpacity>
           </View>
         </View>
-        <Text
-          style={estilos.LoginStyle.underline}
-          onPress={() => navigation.navigate("Home")}
+        <TouchableHighlight
+        onPress={() => navigation.navigate("Home")}
+        style={estilos.LoginStyle.underline}
+        >
+         
+        <Text style={estilos.LoginStyle.underline}
+          
         >
           Criar Conta
         </Text>
+        </TouchableHighlight>
       </View>
     </View>
   );
