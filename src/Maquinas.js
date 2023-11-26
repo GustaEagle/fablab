@@ -16,11 +16,12 @@ import {
 } from "react-native";
 import Header from "./Header";
 
-function Maquinas({ navigation }) {
+function Maquinas({ navigation, route }) {
+  const {usuario} = route.params;
+  console.log(usuario);
   return (
     <View style={estilos.MaquinaStyle.viewMaquinas}>
       <Header navigation={navigation} />
-
       <View style={estilos.MaquinaStyle.containerMaquinas}>
         <ScrollView style={estilos.MaquinaStyle.scrollMaquinas}>
           <View style={estilos.MaquinaStyle.grid}>
@@ -31,7 +32,10 @@ function Maquinas({ navigation }) {
             />
             <Text style={estilos.MaquinaStyle.title}>Cortadora e Gravadora a laser</Text>
             <View style={estilos.MaquinaStyle.rowContainer}>
-              <TouchableHighlight style={estilos.MaquinaStyle.botoes}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.usuario)}
+              >
                 <Text style={estilos.MaquinaStyle.subTitle}>
                   Consultar
                 </Text>

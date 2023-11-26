@@ -2,32 +2,50 @@ import React, { useState } from "react";
 import estilos from "./style/estilos";
 import {
   View,
-  TouchableHighlight,
-  ScrollView,
-  TextInput,
   Text,
   Image,
-  ImageBackground,
-  StyleSheet,
-  Linking,
+  TextInput,
   TouchableOpacity,
   Switch,
+  ImageBackground,
 } from "react-native";
 
-
-function dados() {
-  let user = [['gustavo', '12345'], ['vinelo', '123456789']];
-}
+// Array de usuários para autenticação
+let usuarios = [
+  { usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345' },
+  { usuario: 'vinelo', email: 'vinelo@example.com', senha: '123456789' },
+];
 
 function Login({ navigation }) {
+  const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
   const [mostrar, setMostrar] = useState(false);
+
+  const identificaLogin = () => {
+    // Verifique se as credenciais são válidas
+    const usuarioExistente = usuarios.find(
+      (e) => 
+        (e.usuario === usuario || e.email === usuario) &&
+        e.senha === senha
+    );
+    console.log(usuarioExistente)
+    if (usuarioExistente) {
+      // Login efetuado
+      navigation.navigate("Maquinas",{usuario:usuarioExistente});
+    } else {
+      // Erro
+      alert("Usuário ou senha inválidos. Tente novamente.");
+    }
+  };
 
   return (
     <View style={estilos.LoginStyle.viewLogin}>
       <ImageBackground
         source={require("./assets/imagens/Fundo.jpg")}
-        style={[estilos.LoginStyle.fundo, { opacity: 0.2, backgroundColor: "#000" }]}
+        style={[
+          estilos.LoginStyle.fundo,
+          { opacity: 0.2, backgroundColor: "#000" },
+        ]}
       ></ImageBackground>
       <View style={estilos.LoginStyle.viewLoginWhite}>
         <View style={estilos.LoginStyle.viewLoginTopo}>
@@ -47,29 +65,29 @@ function Login({ navigation }) {
 
         <View style={estilos.LoginStyle.loginViewGrey}>
           <Text style={estilos.LoginStyle.loginLabelInput}>Usuário</Text>
-          <View
-            style={estilos.LoginStyle.rowIcon}>
+          <View style={estilos.LoginStyle.rowIcon}>
             <Image
               source={require("./assets/imagens/email.png")}
-              style={estilos.LoginStyle.loginImageInput}>
-            </Image>
+              style={estilos.LoginStyle.loginImageInput}
+            ></Image>
             <TextInput
               style={estilos.LoginStyle.loginInp}
-              placeholder="Usuario"
+              placeholder="Usuário ou Email"
+              onChangeText={(text) => setUsuario(text)}
             ></TextInput>
           </View>
           <Text style={estilos.LoginStyle.loginLabelInput}>Senha</Text>
           <View style={estilos.LoginStyle.rowIcon}>
             <Image
               source={require("./assets/imagens/senha.png")}
-              style={estilos.LoginStyle.loginImageInput}>
-            </Image>
+              style={estilos.LoginStyle.loginImageInput}
+            ></Image>
 
             <TextInput
               style={estilos.LoginStyle.loginInp}
               placeholder="Senha"
               value={senha}
-              onChangeText={(e) => setSenha(e)}
+              onChangeText={(text) => setSenha(text)}
               secureTextEntry={!mostrar}
             />
           </View>
@@ -85,23 +103,18 @@ function Login({ navigation }) {
             <TouchableOpacity
               style={estilos.LoginStyle.botaoConfirma}
               activeOpacity={0.7}
-              onPress={() => navigation.navigate("Maquinas")}
+              onPress={identificaLogin}
             >
               <Text style={estilos.LoginStyle.txt}>CONFIRMAR</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableHighlight
+        <TouchableOpacity
           onPress={() => navigation.navigate("Home")}
           style={estilos.LoginStyle.underline}
         >
-
-          <Text style={estilos.LoginStyle.underline}
-
-          >
-            Criar Conta
-          </Text>
-        </TouchableHighlight>
+          <Text style={estilos.LoginStyle.underline}>Criar Conta</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
