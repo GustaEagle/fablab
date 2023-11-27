@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 
-function Header({ navigation }) {
+function Header({ navigation,usuario }) {
     return (
         <View style={estilos.HeaderStyle.headerBackg}>
             <LinearGradient
@@ -36,7 +36,7 @@ function Header({ navigation }) {
                         resizeMode="cover"
                         source={require('./assets/imagens/pocoyo.png')}></Image>
                 </View>
-                <Text style={estilos.HeaderStyle.profileName}>Zé Maria</Text>
+                <Text style={estilos.HeaderStyle.profileName}>{(usuario.usuario).charAt(0).toUpperCase() + (usuario.usuario).slice(1)}</Text>
             </View>
         </View>
     )

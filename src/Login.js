@@ -12,8 +12,8 @@ import {
 
 // Array de usuários para autenticação
 let usuarios = [
-  { usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345' },
-  { usuario: 'vinelo', email: 'vinelo@example.com', senha: '123456789' },
+  { usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345', fabcoins:0 },
+  { usuario: 'vinelo', email: 'vinelo@example.com', senha: '123456789', fabcoins:0 },
 ];
 
 function Login({ navigation }) {
@@ -115,6 +115,14 @@ function Login({ navigation }) {
         >
           <Text style={estilos.LoginStyle.underline}>Criar Conta</Text>
         </TouchableOpacity>
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      ></Modal>
       </View>
     </View>
   );
