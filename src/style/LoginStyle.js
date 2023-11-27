@@ -71,6 +71,15 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
   },
+  loginViewGreyCadastro:{
+    backgroundColor: "#eee",
+    minWidthwidth: "80%",
+    height: "70%",
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+
+  },
   rowIcon: {
     flexDirection: "row",
     justifyContent: "center",

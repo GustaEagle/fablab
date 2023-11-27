@@ -34,7 +34,7 @@ function Header({ navigation,usuario }) {
                     <Image
                         style={estilos.HeaderStyle.profileImage}
                         resizeMode="cover"
-                        source={require('./assets/imagens/pocoyo.png')}></Image>
+                        source={usuario.img}></Image>
                 </View>
                 <Text style={estilos.HeaderStyle.profileName}>{(usuario.usuario).charAt(0).toUpperCase() + (usuario.usuario).slice(1)}</Text>
             </View>
