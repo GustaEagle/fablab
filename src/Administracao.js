@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import estilos from "./style/estilos";
 import Header from "./Header";
+
 import {
   View,
   TextInput,
@@ -8,19 +9,36 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  TouchableHighlight,
 } from "react-native";
+import Checkbox from 'expo-checkbox';
+
 
 function Administracao({ navigation, route }) {
-  const { usuario } = route.params;
-  const { usuarios } = route.params;
+  const { usuario, usuarios } = route.params;
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredUsers, setFilteredUsers] = useState([""]);
+  const [usuarioFiltro, setUsuarioFiltro] = useState([]);
+  const [isChecked, setChecked] = useState(false);
 
-  const handleFilter = () => {
-    const filtered = usuarios.filter((user) =>
+  useEffect(() => {
+    // Ao entrar na tela, exibe todos os usuários inicialmente
+    setUsuarioFiltro(usuarios);
+  }, [usuarios]);
+
+  const setFiltro = () => {
+    const filtro = usuarios.filter((user) =>
       user.email.toUpperCase().includes(searchTerm.toUpperCase())
     );
-    setFilteredUsers(filtered);
+    setUsuarioFiltro(filtro);
+
+    const handleCheckBox = (userId) => {
+      // Lógica para lidar com a seleção/deseleção do checkbox
+      const updatedUsuarios = usuarioFiltro.map((user) =>
+        user.id === userId ? { ...user, selected: !user.selected } : user
+      );
+      console.log(updatedUsuarios);
+      setUsuarioFiltro(updatedUsuarios);
+    };
   };
 
   return (
@@ -36,7 +54,7 @@ function Administracao({ navigation, route }) {
           />
           <TouchableOpacity
             style={estilos.AdministracaoStyle.lupa}
-            onPress={handleFilter}
+            onPress={setFiltro}
           >
             <Image
               resizeMode="cover"
@@ -45,14 +63,36 @@ function Administracao({ navigation, route }) {
             />
           </TouchableOpacity>
         </View>
-        <View>
-          <ScrollView>
-            {filteredUsers.length > 0 ? (
-              filteredUsers.map((user, idx) => (
-                <View  style={{width:'100%',backgroundColor:'blue',borderRadius:10,borderColor:'black',padding:10,}} key={idx}>
-                  <Text>Usuario: {user.usuario}</Text>
-                  <Text>Email: {user.email}</Text>
-                  <Text>Fabcoins: {user.fabcoins} $</Text>
+        <View style={estilos.AdministracaoStyle.scrollViewArea}>
+
+          <ScrollView style={estilos.AdministracaoStyle.scrollView}>
+            {usuarioFiltro.length > 0 ? (
+              usuarioFiltro.map((user, idx) => (
+                <View style={estilos.AdministracaoStyle.grid} key={idx}>
+                  <View style={estilos.AdministracaoStyle.row}>
+                    <View style={estilos.AdministracaoStyle.profileBorder}>
+                      <Image
+                        style={estilos.AdministracaoStyle.profileImage}
+                        resizeMode="cover"
+                        source={user.img}></Image>
+                    </View>
+                    <View style={estilos.AdministracaoStyle.info}>
+                      <Text style={estilos.AdministracaoStyle.name}>{user.usuario.charAt(0).toUpperCase() + user.usuario.slice(1)}</Text>
+                      <Text style={estilos.AdministracaoStyle.emailText}>{user.email}</Text>
+                      <View style={estilos.AdministracaoStyle.row2}>
+                        <Image
+                          style={estilos.AdministracaoStyle.fabcoin}
+                          resizeMode="contain"
+                          source={require('./assets/imagens/fabcoins.png')}></Image>
+                        <Text style={estilos.AdministracaoStyle.fabcoinText}>{user.fabcoins} $</Text>
+                      </View>
+                    </View>
+                    <Checkbox
+                      // value={user.selected}
+                      value={isChecked}
+                      onValueChange={setChecked}
+                    />
+                  </View>
                 </View>
               ))
             ) : (
@@ -60,6 +100,9 @@ function Administracao({ navigation, route }) {
             )}
           </ScrollView>
         </View>
+        <TouchableHighlight>
+          <Text>CONFIRMAR</Text>
+        </TouchableHighlight>
       </View>
     </View>
   );

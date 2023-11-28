@@ -17,6 +17,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         paddingTop: statusBarHeight,
         alignItems: 'center',
+        // justifyContent:'flex-end'
     },
     profileBorder: {
         marginLeft: 15,
@@ -54,9 +55,15 @@ export default StyleSheet.create({
         paddingTop: statusBarHeight,
         alignItems: 'center',
     },
-    ImgFabcoins:{
+    imgFabcoins:{
         resizeMode:'contain',
         width:50,
         height:50,
+    },
+    fabcoinText:{
+        fontSize:16,
+        fontWeight:'600',
+        color:'white',
+        marginLeft:-7
     }
 })

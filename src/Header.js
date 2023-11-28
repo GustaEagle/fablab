@@ -31,7 +31,7 @@ function Header({ navigation, usuario }) {
           <TouchableOpacity
             style={estilos.HeaderStyle.iconeVoltar}
             activeOpacity={0.7}
-            onPress={() => navigation.navigate("Home")}>
+            onPress={() => navigation.goBack()}>
             <Image resizeMode='contain' style={estilos.HeaderStyle.iconVoltar} source={require('./assets/imagens/botao-voltar.png')}/>
           </TouchableOpacity>
           
@@ -44,7 +44,8 @@ function Header({ navigation, usuario }) {
           </View>
           
           <Text style={estilos.HeaderStyle.profileName}>{nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)}</Text>  
-          <Image style={estilos.HeaderStyle.ImgFabcoins} source={require('./assets/imagens/fabcoins.png')}></Image>        
+          <Image style={estilos.HeaderStyle.imgFabcoins} source={require('./assets/imagens/fabcoins.png')}></Image>    
+          <Text style={estilos.HeaderStyle.fabcoinText}>{usuario.fabcoins} $</Text>    
         </View>
       </View>
     )
