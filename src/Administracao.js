@@ -4,7 +4,6 @@ import { Link, NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import estilos from "./style/estilos";
 import Header from "./Header";
-import Header from "./Header";
 import {
   View,
   TouchableHighlight,
@@ -56,7 +55,6 @@ function Administracao({ route, navigation }) {
         >
           <Text style={estilos.AdministracaoStyle.buttonText}>Resetar Fabcoins</Text>
         </TouchableOpacity>
-        {/* Adicione outras funcionalidades conforme necessário */}
       </View>
     </View>
   );
