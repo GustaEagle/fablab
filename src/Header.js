@@ -34,13 +34,12 @@ function Header({ navigation, usuario }) {
             onPress={() => navigation.goBack()}>
             <Image resizeMode='contain' style={estilos.HeaderStyle.iconVoltar} source={require('./assets/imagens/botao-voltar.png')}/>
           </TouchableOpacity>
-          
           <View style={estilos.HeaderStyle.profileBorder}>
+
             <Image
               style={estilos.HeaderStyle.profileImage}
               resizeMode="cover"
               source={usuario.img}></Image>
-
           </View>
           
           <Text style={estilos.HeaderStyle.profileName}>{nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)}</Text>  

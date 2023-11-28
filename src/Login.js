@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import estilos from "./style/estilos";
+import { useUsuariosContext } from "./Context";
 import {
   View,
   Text,
@@ -21,23 +22,11 @@ let usuarios = [
   { id: 4, usuario: 'yuri', email: 'yuri@example.com', senha: 'koalaboy', fabcoins: 0, isAdm: true, img: require('./assets/imagens/koalaboy.png') },
   { id: 5, usuario: 'conde', email: 'conde@example.com', senha: '001122', fabcoins: 50, isAdm: false, img: ImgPadrao },
   { id: 6, usuario: 'ricardo', email: 'ricardo@example.com', senha: 'vegan', fabcoins: 0, isAdm: true, img: require('./assets/imagens/ricardo.jpeg') },
-  { id: 7, usuario: 'rhuan', email: 'rhuan@example.com', senha: 'asmogod', fabcoins: 0, isAdm: false, img: require('./assets/imagens/ricardo.jpeg') },
-  { id: 8, usuario: 'ana', email: 'ana@example.com', senha: 'ana123', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 9, usuario: 'carlos', email: 'carlos@example.com', senha: 'carlos456', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 10, usuario: 'lucas', email: 'lucas@example.com', senha: 'lucas789', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 11, usuario: 'maria', email: 'maria@example.com', senha: 'maria101', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 12, usuario: 'joao', email: 'joao@example.com', senha: 'joao2022', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 13, usuario: 'fernanda', email: 'fernanda@example.com', senha: 'fernanda3030', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 14, usuario: 'pedro', email: 'pedro@example.com', senha: 'pedro4040', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 15, usuario: 'isabela', email: 'isabela@example.com', senha: 'isabela5050', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 16, usuario: 'felipe', email: 'felipe@example.com', senha: 'felipe6060', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 17, usuario: 'sophia', email: 'sophia@example.com', senha: 'sophia7070', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 18, usuario: 'gabriel', email: 'gabriel@example.com', senha: 'gabriel8080', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 19, usuario: 'clara', email: 'clara@example.com', senha: 'clara9090', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 20, usuario: 'enzo', email: 'enzo@example.com', senha: 'enzo1010', fabcoins: 0, isAdm: false, img: ImgPadrao },
 ];
 
+
 function Login({ navigation }) {
+  const { usuarios, updateUsuarios } = useUsuariosContext();
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
   const [email, setEmail] = useState("")
@@ -61,7 +50,7 @@ function Login({ navigation }) {
     const usuarioExistente = Valida(); // Chama a função para verificar
     if (usuarioExistente) {
       navigation.navigate(usuarioExistente.isAdm ? 'Administracao' : 'Maquinas',
-       { usuario: usuarioExistente, usuarios: usuarios })
+        { usuario: usuarioExistente, usuarios: usuarios })
     }
     else {
       alert("Usuário ou senha inválidos. Tente novamente.")
@@ -132,10 +121,10 @@ function Login({ navigation }) {
               style={estilos.LoginStyle.loginInp}
               placeholder="Usuário ou Email"
               onChangeText={(t) => {
-                if(t.includes('@')){
+                if (t.includes('@')) {
                   setEmail(t)
                 }
-                else{
+                else {
                   setUsuario(t)
                 }
               }}></TextInput>
