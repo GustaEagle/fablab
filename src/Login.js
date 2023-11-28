@@ -13,12 +13,12 @@ import {
 
 // Array de usuários para autenticação
 let usuarios = [
-  { id: 1, usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345', fabcoins: 0, isAdm: false, img: require('./assets/imagens/pocoyo.png') },
+  { id: 1, usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345', fabcoins: 0, isAdm: false, img: require('./assets/imagens/user.png') },
   { id: 2, usuario: 'vinelo', email: 'vinelo@example.com', senha: '123456789', fabcoins: 0, isAdm: false, img: require('./assets/imagens/user.png') },
-  { id: 3, usuario: 'zequinha', email: 'zequinha@example.com', senha: '122333', fabcoins: 0, isAdm: true, img: require('./assets/imagens/pocoyo.png') },
+  { id: 3, usuario: 'zequinha', email: 'zequinha@example.com', senha: 'doublebiceps', fabcoins: 0, isAdm: true, img: require('./assets/imagens/ze.jpeg') },
   { id: 4, usuario: 'yuri', email: 'storino@example.com', senha: 'koalaboy', fabcoins: 0, isAdm: true, img: require('./assets/imagens/koalaboy.png') },
   { id: 5, usuario: 'conde', email: 'conde@example.com', senha: '001122', fabcoins: 0, isAdm: false, img: require('./assets/imagens/user.png') },
-  { id: 6, usuario: 'ricardo', email: 'careca@example.com', senha: 'vegan', fabcoins: 0, isAdm: true, img: require('./assets/imagens/user.png') },
+  { id: 6, usuario: 'ricardo', email: 'careca@example.com', senha: 'vegan', fabcoins: 0, isAdm: false, img: require('./assets/imagens/ricardo.jpeg') },
 ];
 
 function Login({ navigation }) {
@@ -31,14 +31,22 @@ function Login({ navigation }) {
 
   const NovoLogin = () => {
     const user = usuarios.find(u => u.usuario === usuario);
-    if (user && user.isAdm) {
-      navigation.navigate("Administracao", { usuario: user });
+    if (user) {
+      if (user.isAdm) {
+        navigation.navigate("Administracao", { usuario: user });
+      } else {
+        navigation.navigate("Maquinas", { usuario: user });
+      }
     } else {
-      navigation.navigate("Maquinas", { usuario: user });
+      alert('Usuário não encontrado. Tente novamente.');
     }
-  }
+  };
 
   const identificaLogin = () => {
+    if (!usuario || !senha) {
+      alert('Por favor, preencha todos os campos.');
+      return;
+    }
     // Verifique se as credenciais são válidas
     const usuarioExistente = usuarios.find(
       (e) =>
@@ -55,18 +63,27 @@ function Login({ navigation }) {
   };
 
   const Registrar = () => {
-    const usuarioExiste = usuariosCadastrados.find((u) => u.usuario === usuario);
+    const usuarioExiste = usuarios.find((u) => u.usuario === usuario);
     if (usuarioExiste) {
       alert('Usuário já registrado');
     } else {
-      const idSoma = Number(usuarios.length) + 2
+      const idSoma = Number(usuarios.length) + 1; // Ajuste para a lógica de geração de ID
       const novoUsuario = { id: idSoma, usuario, email, senha, fabcoins: 1, isAdm: false, img: require('./assets/imagens/user.png') };
+      
+      // Adicionar o novo usuário ao array
+      usuarios.push(novoUsuario);
+  
+      // Limpar os campos
       setUsuario('');
       setEmail('');
       setSenha('');
-      setModalVisible(false);
-      alert('Usuário cadastrado com sucesso');
-      usuarios.push(novoUsuario)
+  
+      // Navegar para a tela apropriada
+      if (novoUsuario.isAdm) {
+        navigation.navigate("Administracao", { usuario: novoUsuario });
+      } else {
+        navigation.navigate("Maquinas", { usuario: novoUsuario });
+      }
     }
   };
 
