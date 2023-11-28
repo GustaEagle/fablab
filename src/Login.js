@@ -13,7 +13,7 @@ import {
 
 // Array de usuários para autenticação
 let usuarios = [
-  { id: 1, usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345', fabcoins: 0, isAdm: false, img: require('./assets/imagens/pocoyo.png') },
+  { id: 1, usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345', fabcoins: 0, isAdm: false, img: require('./assets/imagens/user.png') },
   { id: 2, usuario: 'vinelo', email: 'vinelo@example.com', senha: '123456789', fabcoins: 0, isAdm: false, img: require('./assets/imagens/user.png') },
   { id: 3, usuario: 'zequinha', email: 'zequinha@example.com', senha: '122333', fabcoins: 0, isAdm: true, img: require('./assets/imagens/pocoyo.png') },
   { id: 4, usuario: 'yuri', email: 'storino@example.com', senha: 'koalaboy', fabcoins: 0, isAdm: true, img: require('./assets/imagens/koalaboy.png') },

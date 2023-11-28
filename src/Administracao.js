@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import estilos from "./style/estilos";
+import Header from "./Header";
 import {
   View,
   TouchableHighlight,
@@ -16,13 +17,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-function Administracao({ navigation }) {
+function Administracao({ navigation, route }) {
+  const usuario = route.params;
   return (
-    <ImageBackground
-      source={require("./assets/imagens/Fundo.jpg")}
-      style={estilos.HomeStyle.fundo}
-    >
-    </ImageBackground>
+    <View style={estilos.AdministracaoStyle.ContainerAdm}>
+      <Header navigation={navigation} usuario={usuario}/>
+
+    </View>
   );
 }
 export default Administracao;
