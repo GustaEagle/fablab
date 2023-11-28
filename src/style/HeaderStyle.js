@@ -48,4 +48,15 @@ export default StyleSheet.create({
         justifyContent: "center",
         flex: 1
       },
+    viewFabcoins: {
+        width: '100%',
+        height: '100%',
+        paddingTop: statusBarHeight,
+        alignItems: 'center',
+    },
+    ImgFabcoins:{
+        resizeMode:'contain',
+        width:50,
+        height:50,
+    }
 })

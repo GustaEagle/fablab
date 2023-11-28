@@ -56,6 +56,7 @@ function Administracao({ route, navigation }) {
           <Text style={estilos.AdministracaoStyle.buttonText}>Resetar Fabcoins</Text>
         </TouchableOpacity>
       </View>
+      
     </View>
   );
 }

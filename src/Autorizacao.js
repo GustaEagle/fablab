@@ -47,6 +47,7 @@ function Autorizacao({ navigation }) {
     alert('Ficha enviada com sucesso!')
     navigation.navigate("Home")
   }
+  
   const atualiza = (novo, value)=>{
     setFicha({...ficha,[novo]:value})
   }

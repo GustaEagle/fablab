@@ -30,8 +30,8 @@ function Header({ navigation, usuario }) {
           <TouchableOpacity
             style={estilos.HeaderStyle.iconeVoltar}
             activeOpacity={0.7}
-            onPress={() => navigation.goBack()}>
-            <Image resizeMode='contain' style={estilos.HeaderStyle.iconVoltar} source={require('./assets/imagens/botao-voltar.png')}></Image>
+            onPress={() => navigation.navigate("Home")}>
+            <Image resizeMode='contain' style={estilos.HeaderStyle.iconVoltar} source={require('./assets/imagens/botao-voltar.png')}/>
           </TouchableOpacity>
           <View style={estilos.HeaderStyle.profileBorder}>
             <Image
@@ -39,8 +39,7 @@ function Header({ navigation, usuario }) {
               resizeMode="cover"
               source={usuario.img}></Image>
           </View>
-          <Text style={estilos.HeaderStyle.profileName}>{nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)}</Text>
-          
+          <Text style={estilos.HeaderStyle.profileName}>{nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)}</Text>          
         </View>
       </View>
     )
