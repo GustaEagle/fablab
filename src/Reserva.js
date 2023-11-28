@@ -19,13 +19,21 @@ import {
 
 
 function Reserva ({navigation, route}){
-  const{usuario} = route.params;
-  const machines = route.params.machines;
+  const{usuario, machines} = route.params;
   return(
+    
     <View style={estilos.ReservaStyle.container}>
       <Header navigation={navigation} usuario={usuario}/>
-      <View style ={estilos.ReservaStyle.ViewTitle}>
-        <Text style={estilos.ReservaStyle.TituloMaquinas}>{machines.nome}</Text>
+      <View style ={estilos.ReservaStyle.viewTitle}>
+        <Text style={estilos.ReservaStyle.tituloMaquinas}>{machines.nome}</Text>
+      </View>
+
+      <Image style={estilos.ReservaStyle.imgMaquina} source={machines.img}></Image>
+      <View style={estilos.ReservaStyle.viewHorario}>
+        <TouchableHighlight style ={estilos.ReservaStyle.botoes}>
+          <Text style={estilos.ReservaStyle.textBotao}>08:00-08:30</Text>
+        </TouchableHighlight>
+
       </View>
     </View>
   )
