@@ -32,8 +32,8 @@ function Login({ navigation }) {
   const Cadastrados = usuarios.map(user => user.usuario)
 
 
-  const Valida = () =>{ // Função de validação
-    if (!usuario || !senha){
+  const Valida = () => { // Função de validação
+    if (!usuario || !senha) {
       alert('Por favor, preencha todos os campos.')
       return false;
     }
@@ -42,44 +42,45 @@ function Login({ navigation }) {
     )
     return UserExiste
   }
-  
+
   const Login = () => {
     const usuarioExistente = Valida(); // Chama a função para verificar
-    if (usuarioExistente){
-      navigation.navigate(usuarioExistente.isAdm ? 'Administracao' : 'Maquinas', {usuario: usuarioExistente})
+    if (usuarioExistente) {
+      navigation.navigate(usuarioExistente.isAdm ? 'Administracao' : 'Maquinas', { usuario: usuarioExistente, usuarios: usuarios })
     }
-    else{
+    else {
       alert("Usuário ou senha inválidos. Tente novamente.")
     }
   }
 
   const Registra = () => {
-    if(Cadastrados.includes(usuario)){
+    if (Cadastrados.includes(usuario)) {
       alert("Usuario já cadastrado")
     }
-    else { 
-      if(!usuario || !senha || !email){
-      alert("Favor preencher todos os dados")
-    }
-    else{
-      const idSoma = Number(usuarios.length)+1
-      const NovoUser ={
-      id: idSoma,
-      usuario: usuario,
-      email: email,
-      senha: senha,
-      fabcoins: 50,
-      isAdm: false,
-      img: ImgPadrao}
-      usuarios.push(NovoUser)
-      setUsuario('')
-      setEmail('')
-      setSenha('')
-      setModalVisible(false);
-    }
+    else {
+      if (!usuario || !senha || !email) {
+        alert("Favor preencher todos os dados")
+      }
+      else {
+        const idSoma = Number(usuarios.length) + 1
+        const NovoUser = {
+          id: idSoma,
+          usuario: usuario,
+          email: email,
+          senha: senha,
+          fabcoins: 50,
+          isAdm: false,
+          img: ImgPadrao
+        }
+        usuarios.push(NovoUser)
+        setUsuario('')
+        setEmail('')
+        setSenha('')
+        setModalVisible(false);
+      }
     }
   }
- 
+
   return (
     <View style={estilos.LoginStyle.viewLogin}>
       <ImageBackground

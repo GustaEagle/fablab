@@ -1,62 +1,66 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Link, NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import estilos from "./style/estilos";
 import Header from "./Header";
 import {
   View,
-  TouchableHighlight,
-  ScrollView,
   TextInput,
   Text,
   Image,
-  ImageBackground,
-  StyleSheet,
-  Linking,
+  ScrollView,
   TouchableOpacity,
 } from "react-native";
 
-function Administracao({ route, navigation }) {
+function Administracao({ navigation, route }) {
   const { usuario } = route.params;
-  const [fabcoins, setFabcoins] = useState(usuario.fabcoins);
+  const { usuarios } = route.params;
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState([""]);
 
-  const adicionarFabcoins = () => {
-    setFabcoins(fabcoins + 1);
-  };
-
-  const resetarFabcoins = () => {
-    setFabcoins(0);
+  const handleFilter = () => {
+    const filtered = usuarios.filter((user) =>
+      user.email.toUpperCase().includes(searchTerm.toUpperCase())
+    );
+    setFilteredUsers(filtered);
   };
 
   return (
     <View style={estilos.AdministracaoStyle.container}>
-      <Header navigation={navigation} usuario={usuario}/>
-      <Image
-        source={usuario.img}
-        style={estilos.AdministracaoStyle.icon}
-      />
-      <Text style={estilos.AdministracaoStyle.text}>
-        Bem-vindo, {usuario.usuario} (Admin)!
-      </Text>
+      <Header navigation={navigation} usuario={usuario} />
       <View style={estilos.AdministracaoStyle.infoContainer}>
-        <Text style={estilos.AdministracaoStyle.infoText}>
-          Fabcoins disponíveis: {fabcoins}
-        </Text>
-        <TouchableOpacity
-          style={estilos.AdministracaoStyle.button}
-          onPress={adicionarFabcoins}
-        >
-          <Text style={estilos.AdministracaoStyle.buttonText}>Adicionar Fabcoin</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[estilos.AdministracaoStyle.button, estilos.AdministracaoStyle.resetButton]}
-          onPress={resetarFabcoins}
-        >
-          <Text style={estilos.AdministracaoStyle.buttonText}>Resetar Fabcoins</Text>
-        </TouchableOpacity>
+        <View style={estilos.AdministracaoStyle.rowContainer}>
+          <TextInput
+            style={estilos.AdministracaoStyle.textInput}
+            placeholder="Pesquisar por e-mail"
+            value={searchTerm}
+            onChangeText={(text) => setSearchTerm(text)}
+          />
+          <TouchableOpacity
+            style={estilos.AdministracaoStyle.lupa}
+            onPress={handleFilter}
+          >
+            <Image
+              resizeMode="cover"
+              style={estilos.AdministracaoStyle.lupa}
+              source={require('./assets/imagens/lupa.png')}
+            />
+          </TouchableOpacity>
+        </View>
+        <View>
+          <ScrollView>
+            {filteredUsers.length > 0 ? (
+              filteredUsers.map((user, idx) => (
+                <View  style={{width:'100%',backgroundColor:'blue',borderRadius:10,borderColor:'black',padding:10,}} key={idx}>
+                  <Text>Usuario: {user.usuario}</Text>
+                  <Text>Email: {user.email}</Text>
+                  <Text>Fabcoins: {user.fabcoins} $</Text>
+                </View>
+              ))
+            ) : (
+              <Text>Nenhum usuário encontrado.</Text>
+            )}
+          </ScrollView>
+        </View>
       </View>
-      
     </View>
   );
 }
