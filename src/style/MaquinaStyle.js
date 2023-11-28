@@ -19,7 +19,7 @@ export default StyleSheet.create({
         width: '100%',
     },
     grid: {
-        width: '80%',
+        width: '90%',
         height: 300,
         alignItems: 'center',
         borderWidth: 2,
@@ -67,5 +67,12 @@ export default StyleSheet.create({
         borderRadius:15,
         backgroundColor:'#dddddd',
         marginHorizontal:10
-    }
+    },
+    image2: {
+        width: '50%',
+        height: 200,
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 10,
+    },
 })

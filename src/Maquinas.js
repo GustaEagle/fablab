@@ -65,15 +65,45 @@ function Maquinas({ navigation, route }) {
               source={require("./assets/imagens/solda.jpg")}
               resizeMode="contain"
             />
-            <Text>Estação de Solda e Retrabalho</Text>
+            <Text style ={estilos.MaquinaStyle.title}>Estação de Solda e Retrabalho</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.img)}
+              >
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={estilos.MaquinaStyle.grid}>
             <Image
-              style={estilos.MaquinaStyle.image}
+              style={estilos.MaquinaStyle.image2}
               source={require("./assets/imagens/pcb.jpg")}
               resizeMode="contain"
             />
-            <Text>Prototipadora de Circuitos Impressos</Text>
+            <Text style={estilos.MaquinaStyle.title}>Prototipadora de Circuitos Impressos</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.img)}
+              >
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={estilos.MaquinaStyle.grid}>
             <Image
@@ -81,7 +111,22 @@ function Maquinas({ navigation, route }) {
               source={require("./assets/imagens/guider.jpg")}
               resizeMode="contain"
             />
-            <Text>Impressora Guider 3D</Text>
+            <Text style={estilos.MaquinaStyle.title}>Impressora Guider 3D</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.img)}
+              >
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={estilos.MaquinaStyle.grid}>
             <Image
@@ -89,7 +134,22 @@ function Maquinas({ navigation, route }) {
               source={require("./assets/imagens/finder.jpg")}
               resizeMode="contain"
             />
-            <Text>Impressora Finder 3D</Text>
+            <Text style={estilos.MaquinaStyle.title}>Impressora Finder 3D</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.img)}
+              >
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
         </ScrollView>
       </View>

@@ -7,13 +7,14 @@ export default StyleSheet.create({
         alignItems:'center',
     },
     ViewTitle:{
-        width:'100%',
+        width:'90%',
         borderRadius:15,
-        padding:10,
+        height:'5%',
+        margin:10,
         backgroundColor: "#dc261e",
     },
     TituloMaquinas:{
-        fontSize:18,
+        fontSize:20,
         textAlign:'center',
         fontWeight:'bold',
     },
