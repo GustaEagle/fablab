@@ -35,7 +35,7 @@ function Maquinas({ navigation, route }) {
             <View style={estilos.MaquinaStyle.rowContainer}>
               <TouchableHighlight
                 style={estilos.MaquinaStyle.botoes}
-                onPress={() => console.warn(usuario.usuario)}
+                onPress={() => console.warn(usuario.img)}
               >
                 <Text style={estilos.MaquinaStyle.subTitle}>
                   Consultar

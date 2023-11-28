@@ -22,6 +22,7 @@ function Header({ navigation, usuario }) {
   
     return (
       <View style={estilos.HeaderStyle.headerBackg}>
+
         <LinearGradient
           style={estilos.HeaderStyle.gradientHeader}
           colors={['#F00000', '#f80759']}
@@ -33,13 +34,17 @@ function Header({ navigation, usuario }) {
             onPress={() => navigation.navigate("Home")}>
             <Image resizeMode='contain' style={estilos.HeaderStyle.iconVoltar} source={require('./assets/imagens/botao-voltar.png')}/>
           </TouchableOpacity>
+          
           <View style={estilos.HeaderStyle.profileBorder}>
             <Image
               style={estilos.HeaderStyle.profileImage}
               resizeMode="cover"
               source={usuario.img}></Image>
+
           </View>
-          <Text style={estilos.HeaderStyle.profileName}>{nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)}</Text>          
+          
+          <Text style={estilos.HeaderStyle.profileName}>{nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)}</Text>  
+          <Image style={estilos.HeaderStyle.ImgFabcoins} source={require('./assets/imagens/fabcoins.png')}></Image>        
         </View>
       </View>
     )

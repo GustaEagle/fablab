@@ -8,17 +8,19 @@ import {
   TouchableOpacity,
   Switch,
   ImageBackground,
-  Modal
+  Modal,
+  Alert
 } from "react-native";
 
 // Array de usuários para autenticação
+const ImgPadrao = require('./assets/imagens/user.png')
 let usuarios = [
-  { id: 1, usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345', fabcoins: 0, isAdm: false, img: require('./assets/imagens/user.png') },
-  { id: 2, usuario: 'vinelo', email: 'vinelo@example.com', senha: '123456789', fabcoins: 0, isAdm: false, img: require('./assets/imagens/user.png') },
+  { id: 1, usuario: 'gustavo', email: 'gustavo@example.com', senha: '12345', fabcoins: 0, isAdm: false, img: ImgPadrao },
+  { id: 2, usuario: 'vinelo', email: 'vinelo@example.com', senha: '123456789', fabcoins: 0, isAdm: false, img: ImgPadrao },
   { id: 3, usuario: 'zequinha', email: 'zequinha@example.com', senha: 'doublebiceps', fabcoins: 0, isAdm: true, img: require('./assets/imagens/ze.jpeg') },
   { id: 4, usuario: 'yuri', email: 'storino@example.com', senha: 'koalaboy', fabcoins: 0, isAdm: true, img: require('./assets/imagens/koalaboy.png') },
-  { id: 5, usuario: 'conde', email: 'conde@example.com', senha: '001122', fabcoins: 0, isAdm: false, img: require('./assets/imagens/user.png') },
-  { id: 6, usuario: 'ricardo', email: 'careca@example.com', senha: 'vegan', fabcoins: 0, isAdm: false, img: require('./assets/imagens/ricardo.jpeg') },
+  { id: 5, usuario: 'conde', email: 'conde@example.com', senha: '001122', fabcoins: 0, isAdm: false, img: ImgPadrao },
+  { id: 6, usuario: 'ricardo', email: 'careca@example.com', senha: 'vegan', fabcoins: 0, isAdm: true, img: require('./assets/imagens/ricardo.jpeg') },
 ];
 
 function Login({ navigation }) {
@@ -27,66 +29,57 @@ function Login({ navigation }) {
   const [email, setEmail] = useState("")
   const [mostrar, setMostrar] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [usuariosCadastrados, setUsuariosCadastrados] = useState([]);
+  const Cadastrados = usuarios.map(user => user.usuario)
 
-  const NovoLogin = () => {
-    const user = usuarios.find(u => u.usuario === usuario);
-    if (user) {
-      if (user.isAdm) {
-        navigation.navigate("Administracao", { usuario: user });
-      } else {
-        navigation.navigate("Maquinas", { usuario: user });
-      }
-    } else {
-      alert('Usuário não encontrado. Tente novamente.');
-    }
-  };
 
-  const identificaLogin = () => {
-    if (!usuario || !senha) {
-      alert('Por favor, preencha todos os campos.');
-      return;
+  const Valida = () =>{ // Função de validação
+    if (!usuario || !senha){
+      alert('Por favor, preencha todos os campos.')
+      return false;
     }
-    // Verifique se as credenciais são válidas
-    const usuarioExistente = usuarios.find(
-      (e) =>
-        (e.usuario === usuario || e.email === usuario) &&
-        e.senha === senha
-    );
-    if (usuarioExistente) {
-      // Login efetuado
-      navigation.navigate("Maquinas", { usuario: usuarioExistente });
-    } else {
-      // Erro
-      alert("Usuário ou senha inválidos. Tente novamente.");
-    }
-  };
-
-  const Registrar = () => {
-    const usuarioExiste = usuarios.find((u) => u.usuario === usuario);
-    if (usuarioExiste) {
-      alert('Usuário já registrado');
-    } else {
-      const idSoma = Number(usuarios.length) + 1; // Ajuste para a lógica de geração de ID
-      const novoUsuario = { id: idSoma, usuario, email, senha, fabcoins: 1, isAdm: false, img: require('./assets/imagens/user.png') };
-      
-      // Adicionar o novo usuário ao array
-      usuarios.push(novoUsuario);
+    const UserExiste = usuarios.find(
+      (u) => (u.usuario === usuario || u.usuario === email) && u.senha === senha
+    )
+    return UserExiste
+  }
   
-      // Limpar os campos
-      setUsuario('');
-      setEmail('');
-      setSenha('');
-  
-      // Navegar para a tela apropriada
-      if (novoUsuario.isAdm) {
-        navigation.navigate("Administracao", { usuario: novoUsuario });
-      } else {
-        navigation.navigate("Maquinas", { usuario: novoUsuario });
-      }
+  const Login = () => {
+    const usuarioExistente = Valida(); // Chama a função para verificar
+    if (usuarioExistente){
+      navigation.navigate(usuarioExistente.isAdm ? 'Administracao' : 'Maquinas', {usuario: usuarioExistente})
     }
-  };
+    else{
+      alert("Usuário ou senha inválidos. Tente novamente.")
+    }
+  }
 
+  const Registra = () => {
+    if(Cadastrados.includes(usuario)){
+      alert("Usuario já cadastrado")
+    }
+    else { 
+      if(!usuario || !senha || !email){
+      alert("Favor preencher todos os dados")
+    }
+    else{
+      const idSoma = Number(usuarios.length)+1
+      const NovoUser ={
+      id: idSoma,
+      usuario: usuario,
+      email: email,
+      senha: senha,
+      fabcoins: 50,
+      isAdm: false,
+      img: ImgPadrao}
+      usuarios.push(NovoUser)
+      setUsuario('')
+      setEmail('')
+      setSenha('')
+      setModalVisible(false);
+    }
+    }
+  }
+ 
   return (
     <View style={estilos.LoginStyle.viewLogin}>
       <ImageBackground
@@ -152,7 +145,7 @@ function Login({ navigation }) {
             <TouchableOpacity
               style={estilos.LoginStyle.botaoConfirma}
               activeOpacity={0.7}
-              onPress={NovoLogin}
+              onPress={Login}
             >
               <Text style={estilos.LoginStyle.txt}>CONFIRMAR</Text>
             </TouchableOpacity>
@@ -250,7 +243,7 @@ function Login({ navigation }) {
                 <TouchableOpacity
                   style={estilos.LoginStyle.botaoConfirma}
                   activeOpacity={0.7}
-                  onPress={Registrar}
+                  onPress={Registra}
                 >
                   <Text style={estilos.LoginStyle.txt}>CONFIRMAR</Text>
                 </TouchableOpacity>
