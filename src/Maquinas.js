@@ -22,6 +22,7 @@ function Maquinas({ navigation, route }) {
   return (
     <View style={estilos.MaquinaStyle.viewMaquinas}>
       <Header navigation={navigation} usuario={usuario}/>
+      
       <View style={estilos.MaquinaStyle.containerMaquinas}>
         <ScrollView style={estilos.MaquinaStyle.scrollMaquinas}>
           <View style={estilos.MaquinaStyle.grid}>

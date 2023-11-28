@@ -5,6 +5,7 @@ import Home from "./src/Home";
 import Login from "./src/Login";
 import Autorizacao from "./src/Autorizacao";
 import Maquinas from "./src/Maquinas";
+import Administracao from "./src/Administracao";
 
 import {
   
@@ -46,6 +47,14 @@ function App() {
           component={Maquinas}
           options={{
             title: "Maquinas",
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Administracao"
+          component={Administracao}
+          options={{
+            title: "Adminsitracao",
             headerShown: false,
           }}
         />
