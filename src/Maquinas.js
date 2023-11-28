@@ -16,9 +16,20 @@ import {
 } from "react-native";
 import Header from "./Header";
 
+const machines=[
+  {nome:'Cortadora e Gravadora a laser', img: require("./assets/imagens/cortadora.jpg")},
+  {nome:'Estação de Solda e Retrabalho', img:require("./assets/imagens/solda.jpg")},
+  {nome:'PCB-PROTO 15', img: require("./assets/imagens/pcb.jpg")},
+  {nome:'Impressora Guider 3D', img:require("./assets/imagens/guider.jpg")},
+  {nome:'Impressora Finder 3D', img:require("./assets/imagens/finder.jpg")},
+]
+
 function Maquinas({ navigation, route }) {
   const {usuario} = route.params;
   console.log(usuario);
+  const IrReserva=()=>{
+    navigation.navigate('Reserva',{machines:machines[0].nome,usuario:usuario})
+  }
   return (
     <View style={estilos.MaquinaStyle.viewMaquinas}>
       <Header navigation={navigation} usuario={usuario}/>
@@ -41,7 +52,7 @@ function Maquinas({ navigation, route }) {
                   Consultar
                 </Text>
               </TouchableHighlight>
-              <TouchableHighlight style={estilos.MaquinaStyle.botoes}>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
                 <Text style={estilos.MaquinaStyle.subTitle}>
                   Reservar
                 </Text>
@@ -54,15 +65,45 @@ function Maquinas({ navigation, route }) {
               source={require("./assets/imagens/solda.jpg")}
               resizeMode="contain"
             />
-            <Text>Estação de Solda e Retrabalho</Text>
+            <Text style ={estilos.MaquinaStyle.title}>Estação de Solda e Retrabalho</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.img)}
+              >
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={estilos.MaquinaStyle.grid}>
             <Image
-              style={estilos.MaquinaStyle.image}
+              style={estilos.MaquinaStyle.image2}
               source={require("./assets/imagens/pcb.jpg")}
               resizeMode="contain"
             />
-            <Text>Prototipadora de Circuitos Impressos</Text>
+            <Text style={estilos.MaquinaStyle.title}>Prototipadora de Circuitos Impressos</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.img)}
+              >
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={estilos.MaquinaStyle.grid}>
             <Image
@@ -70,7 +111,22 @@ function Maquinas({ navigation, route }) {
               source={require("./assets/imagens/guider.jpg")}
               resizeMode="contain"
             />
-            <Text>Impressora Guinder 3D</Text>
+            <Text style={estilos.MaquinaStyle.title}>Impressora Guider 3D</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.img)}
+              >
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <View style={estilos.MaquinaStyle.grid}>
             <Image
@@ -78,7 +134,22 @@ function Maquinas({ navigation, route }) {
               source={require("./assets/imagens/finder.jpg")}
               resizeMode="contain"
             />
-            <Text>Impressora Finder 3D</Text>
+            <Text style={estilos.MaquinaStyle.title}>Impressora Finder 3D</Text>
+            <View style={estilos.MaquinaStyle.rowContainer}>
+              <TouchableHighlight
+                style={estilos.MaquinaStyle.botoes}
+                onPress={() => console.warn(usuario.img)}
+              >
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Consultar
+                </Text>
+              </TouchableHighlight>
+              <TouchableHighlight style={estilos.MaquinaStyle.botoes} onPress={IrReserva}>
+                <Text style={estilos.MaquinaStyle.subTitle}>
+                  Reservar
+                </Text>
+              </TouchableHighlight>
+            </View>
           </View>
         </ScrollView>
       </View>

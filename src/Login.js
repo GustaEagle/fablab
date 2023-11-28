@@ -52,7 +52,7 @@ function Login({ navigation }) {
       return false;
     }
     const UserExiste = usuarios.find(
-      (u) => (u.usuario === usuario || u.usuario === email) && u.senha === senha
+      (u) => (u.usuario === usuario || u.email === email) && u.senha === senha
     )
     return UserExiste
   }
@@ -131,8 +131,14 @@ function Login({ navigation }) {
             <TextInput
               style={estilos.LoginStyle.loginInp}
               placeholder="Usuário ou Email"
-              onChangeText={(text) => setUsuario(text)}
-            ></TextInput>
+              onChangeText={(t) => {
+                if(t.includes('@')){
+                  setEmail(t)
+                }
+                else{
+                  setUsuario(t)
+                }
+              }}></TextInput>
           </View>
           <Text style={estilos.LoginStyle.loginLabelInput}>Senha</Text>
           <View style={estilos.LoginStyle.rowIcon}>
