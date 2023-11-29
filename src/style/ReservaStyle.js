@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
-    container:{
+    containerReserva:{
         backgroundColor: 'white',
         width:'100%',
         height:'100%',
@@ -68,10 +68,11 @@ export default StyleSheet.create({
         color:'white'
     },
     modal:{
-        width:'80%',
-        height:'80%',
+        flex:1,
         backgroundColor:'blue',
         borderRadius:15,
+        alignItems:'center',
+        alignContent:'center'
     },
     confirmTxt2:{
         fontSize:20,
