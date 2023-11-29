@@ -40,16 +40,18 @@ function Reserva ({navigation, route}){
     return total.toFixed(2);
   };
 
-  const Finalizar =(x)=>{
-    if(usuario.fabcoins > x){
-      usuario.fabcoins = usuario.fabcoins - x
-      alert('Reserva feita com sucesso!')
+  const Finalizar = (total) => {
+    if (usuario.fabcoins > total) {
+      setUsuario((prevUsuario) => ({
+        ...prevUsuario,
+        fabcoins: prevUsuario.fabcoins - total,
+      }));
+      alert('Reserva feita com sucesso!');
+    } else {
+      alert('Saldo Insuficiente');
     }
-    else{
-      alert('Saldo Insuficiente')
-    }
-    setModal(false)
-  }
+    setModal(false);
+  };
 
   return(
     
@@ -149,22 +151,14 @@ function Reserva ({navigation, route}){
         </View>
       </ScrollView>
       <TouchableOpacity style={estilos.ReservaStyle.confirmButton}>
-        <Text style={estilos.ReservaStyle.confirmTxt} onPress={()=>{setModal(true)}}>CONFIRMAR RESERVA</Text>
+        <Text style={estilos.ReservaStyle.confirmTxt} onPress={() => Finalizar(Number(Confirma()))}>CONFIRMAR RESERVA</Text>
       </TouchableOpacity>
-      <Modal
-      visible={modal}
-      animationType="slide"
-      onRequestClose={()=>{setModal(!modal)}}
-      style = {estilos.ReservaStyle.modal}
-      >
-        <Text style={estilos.ReservaStyle.confirmTxt2} >{'Valor Total'+ Confirma() + '$'}</Text>
-        <TouchableHighlight style ={estilos.ReservaStyle.confirmButton} onPress={() => Finalizar(Number(Confirma()))}>
-          <Text style={estilos.ReservaStyle.confirmTxt}>  CONFIRMAR </Text>
-        </TouchableHighlight>
-
-      </Modal>
     </View>
   )
+  
+}
+
+export default Reserva
   
 }
 
