@@ -55,7 +55,6 @@ function Reserva({ navigation, route }) {
       <Image style={estilos.ReservaStyle.imgMaquina} source={machines.img} resizeMode='center'></Image>
       <View style={estilos.ReservaStyle.viewScroll}>
       <ScrollView style={estilos.ReservaStyle.scroll}>
-        <View style={estilos.ReservaStyle.viewHorario}>
           <TouchableOpacity style={[estilos.ReservaStyle.botoes, isPressed ? estilos.ReservaStyle.pressionado : null]} onPress={() => { Pressionado(1) }}>
             <Text style={estilos.ReservaStyle.textBotao} >08:00-08:30</Text>
           </TouchableOpacity>
@@ -140,7 +139,6 @@ function Reserva({ navigation, route }) {
           <TouchableOpacity style={[estilos.ReservaStyle.botoes, isPressed ? estilos.ReservaStyle.pressionado : null]} onPress={() => { Pressionado(28) }}>
             <Text style={estilos.ReservaStyle.textBotao}>21:30-22:00</Text>
           </TouchableOpacity>
-        </View>
       </ScrollView>
       </View>
       <TouchableOpacity style={estilos.ReservaStyle.confirmButton}>

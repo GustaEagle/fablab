@@ -30,13 +30,6 @@ export default StyleSheet.create({
         borderWidth: 2,
         borderRadius: 20,
     },
-    viewHorario: {
-        width: '80%',
-        height: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 10,
-    },
     botoes: {
         backgroundColor: 'white',
         borderRadius: 10,
@@ -48,6 +41,7 @@ export default StyleSheet.create({
     },
     textBotao: {
         fontSize: 20,
+        textAlign:'center'
     },
     scroll: {
         width: '80%',
