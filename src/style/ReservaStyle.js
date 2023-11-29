@@ -70,6 +70,13 @@ export default StyleSheet.create({
     modal:{
         width:'80%',
         height:'80%',
-        backgroundColor:'blue'
+        backgroundColor:'blue',
+        borderRadius:15,
+    },
+    confirmTxt2:{
+        fontSize:20,
+        fontWeight:'bold',
+        color:'white'
     }
+
 })
