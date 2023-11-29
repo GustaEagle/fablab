@@ -48,9 +48,10 @@ function Reserva ({navigation, route}){
       }));
       alert('Reserva feita com sucesso!');
     } else {
-      alert('Saldo Insuficiente');
+      alert('Saldo Insuficiente, preencha a ficha de autorização');
     }
     setModal(false);
+    navigation.navigate("Home")
   };
 
   return(
@@ -155,10 +156,6 @@ function Reserva ({navigation, route}){
       </TouchableOpacity>
     </View>
   )
-  
-}
-
-export default Reserva
   
 }
 
