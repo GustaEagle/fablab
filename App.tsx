@@ -66,6 +66,14 @@ function App() {
               headerShown: false,
             }}
           />
+          <Stack.Screen
+            name="Reserva"
+            component={Reserva}
+            options={{
+              title: "Reserva",
+              headerShown: false,
+          }}
+        />
         </Stack.Navigator>
       </NavigationContainer>
     </UsuariosProvider>
