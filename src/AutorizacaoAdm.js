@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import Checkbox from 'expo-checkbox';
 
-function Administracao({ navigation, route }) {
+function AutorizacaoAdm({ navigation, route }) {
   // Obtendo informações do contexto de usuários
   const { usuarios, updateUsuarios } = useUsuariosContext();
 
@@ -69,7 +69,7 @@ function Administracao({ navigation, route }) {
   return (
     <View style={estilos.AutorizacaoAdmStyle.container}>
       {/* Header */}
-      <Header navigation={navigation} usuario={usuario} aut={1}/>
+      <Header navigation={navigation} usuario={usuario} />
 
       {/* Área principal da tela */}
       <View style={estilos.AutorizacaoAdmStyle.infoContainer}>
@@ -150,4 +150,4 @@ function Administracao({ navigation, route }) {
   );
 }
 
-export default Administracao;
+export default AutorizacaoAdm;

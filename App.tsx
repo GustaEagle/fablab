@@ -8,6 +8,7 @@ import Login from "./src/Login";
 import Autorizacao from "./src/Autorizacao";
 import Maquinas from "./src/Maquinas";
 import Administracao from "./src/Administracao";
+import AutorizacaoAdm from "./src/AutorizacaoAdm";
 import { UsuariosProvider } from "./src/Context";
 
 const Stack = createStackNavigator();
@@ -37,7 +38,7 @@ function App() {
             name="Autorizacao"
             component={Autorizacao}
             options={{
-              title: "Autorização",
+              title: "Autorizacão",
               headerShown: false,
             }}
           />
@@ -54,6 +55,14 @@ function App() {
             component={Administracao}
             options={{
               title: "Administração",
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="AutorizacaoAdm"
+            component={AutorizacaoAdm}
+            options={{
+              title: "AutorizacaoAdm",
               headerShown: false,
             }}
           />

@@ -65,5 +65,17 @@ export default StyleSheet.create({
         fontWeight:'600',
         color:'white',
         marginLeft:-7
-    }
+    },
+    iconeAutorizacao: {
+        marginLeft:'auto',
+        marginRight:10,
+        width: '10%',
+        height: '80%',
+        justifyContent:'center'
+    },
+    iconAutorizacao: {
+        width: 45,
+        height: 45,
+        justifyContent: "center",
+   },
 })
