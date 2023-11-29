@@ -1,17 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { Link, NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
 import estilos from "./style/estilos";
 import {
   View,
   TouchableHighlight,
-  ScrollView,
-  TextInput,
   Text,
   Image,
   ImageBackground,
-  StyleSheet,
   Linking,
   TouchableOpacity,
 } from "react-native";

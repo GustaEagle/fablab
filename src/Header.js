@@ -22,7 +22,6 @@ function Header({ navigation, usuario, aut }) {
 
   return (
     <View style={estilos.HeaderStyle.headerBackg}>
-
       <LinearGradient
         style={estilos.HeaderStyle.gradientHeader}
         colors={['#F00000', '#f80759']}
@@ -31,6 +30,7 @@ function Header({ navigation, usuario, aut }) {
         <TouchableOpacity
           style={estilos.HeaderStyle.iconeVoltar}
           activeOpacity={0.7}
+          //função goBack() retorna para tela anterior sempre
           onPress={() => navigation.goBack()}>
           <Image resizeMode='contain' style={estilos.HeaderStyle.iconVoltar} source={require('./assets/imagens/botao-voltar.png')} />
         </TouchableOpacity>
@@ -38,13 +38,14 @@ function Header({ navigation, usuario, aut }) {
 
           <Image
             style={estilos.HeaderStyle.profileImage}
-            resizeMode="cover"
+            resizeMode="contain"
             source={usuario.img}></Image>
         </View>
 
         <Text style={estilos.HeaderStyle.profileName}>{nomeUsuario.charAt(0).toUpperCase() + nomeUsuario.slice(1)}</Text>
         <Image style={estilos.HeaderStyle.imgFabcoins} source={require('./assets/imagens/fabcoins.png')}></Image>
         <Text style={estilos.HeaderStyle.fabcoinText}>{usuario.fabcoins} $</Text>
+        {/* se aut for true, aparece o icon de autorização, se não, não aparece. É para a funcionalidade da tela de autorizaçaoAdm */}
         {aut ? (
           <TouchableHighlight
             style={estilos.HeaderStyle.iconeAutorizacao}

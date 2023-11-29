@@ -15,15 +15,6 @@ import {
 
 // Array de usuários para autenticação
 const ImgPadrao = require('./assets/imagens/user.png')
-let usuarios = [
-  { id: 1, usuario: 'a', email: 'a', senha: 'a', fabcoins: 0, isAdm: true, img: ImgPadrao },
-  { id: 2, usuario: 'vinelo', email: 'vinelo@example.com', senha: '123456789', fabcoins: 0, isAdm: false, img: ImgPadrao },
-  { id: 3, usuario: 'zequinha', email: 'zequinha@example.com', senha: 'doublebiceps', fabcoins: 0, isAdm: true, img: require('./assets/imagens/ze.jpeg') },
-  { id: 4, usuario: 'yuri', email: 'yuri@example.com', senha: 'koalaboy', fabcoins: 0, isAdm: true, img: require('./assets/imagens/koalaboy.png') },
-  { id: 5, usuario: 'conde', email: 'conde@example.com', senha: '001122', fabcoins: 50, isAdm: false, img: ImgPadrao },
-  { id: 6, usuario: 'ricardo', email: 'ricardo@example.com', senha: 'vegan', fabcoins: 0, isAdm: true, img: require('./assets/imagens/ricardo.jpeg') },
-];
-
 
 function Login({ navigation }) {
   const { usuarios, updateUsuarios } = useUsuariosContext();
