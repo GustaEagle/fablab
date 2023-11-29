@@ -67,17 +67,5 @@ export default StyleSheet.create({
         fontSize:18,
         color:'white'
     },
-    modal:{
-        flex:1,
-        backgroundColor:'blue',
-        borderRadius:15,
-        alignItems:'center',
-        alignContent:'center'
-    },
-    confirmTxt2:{
-        fontSize:20,
-        fontWeight:'bold',
-        color:'white'
-    }
 
 })
