@@ -9,6 +9,7 @@ import Autorizacao from "./src/Autorizacao";
 import Maquinas from "./src/Maquinas";
 import Administracao from "./src/Administracao";
 import AutorizacaoAdm from "./src/AutorizacaoAdm";
+import Reserva from "./src/Reserva";
 import { UsuariosProvider } from "./src/Context";
 
 const Stack = createStackNavigator();
