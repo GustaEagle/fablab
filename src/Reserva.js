@@ -25,22 +25,35 @@ function Reserva ({navigation, route}){
   const [modal, setModal] = useState(false)
   const [estadoBotao, setestadoBotao] = useState(Array(28).fill(false))
 
-  const Pressionado = (n)=>{
-    const novoEstado = [...estadoBotao]
-    novoEstado[n] = !novoEstado[n]
-    setestadoBotao = novoEstado
+  const Pressionado = (n) => {
+    setestadoBotao((prevState) => {
+      const novoEstado = [...prevState];
+      novoEstado[n - 1] = !novoEstado[n - 1];
+      return novoEstado;
+    });
+  };
+
+  const Confirma = () => {
+    const valor = Number(12.5);
+    const selecionados = estadoBotao.filter((state) => state === true);
+    const total = valor * Number(selecionados.length);
+    return total.toFixed(2);
+  };
+
+  const Finalizar =(x)=>{
+    if(usuario.fabcoins > x){
+      usuario.fabcoins = usuario.fabcoins - x
+      alert('Reserva feita com sucesso!')
+    }
+    else{
+      alert('Saldo Insuficiente')
+    }
+    setModal(false)
   }
 
-
-  const Confirma = (Pressionado) =>{
-    const valor= Number(12.5)
-    const selecionados = Pressionado.filter((state)=> state === true)
-    const total = valor * Number(selecionados.lenght)
-    return total
-  }
   return(
     
-    <View style={estilos.ReservaStyle.container}>
+    <View style={estilos.ReservaStyle.containerReserva}>
       <Header navigation={navigation} usuario={usuario}/>
       <View style ={estilos.ReservaStyle.viewTitle}>
         <Text style={estilos.ReservaStyle.tituloMaquinas}>{machines.nome}</Text>
@@ -144,9 +157,9 @@ function Reserva ({navigation, route}){
       onRequestClose={()=>{setModal(!modal)}}
       style = {estilos.ReservaStyle.modal}
       >
-        <Text style={estilos.ReservaStyle.confirmTxt2}>{'Valor Total: {total().tofixed(2)}$'}</Text>
-        <TouchableHighlight style ={estilos.ReservaStyle.confirmButton}>
-          <Text> style={estilos.ReservaStyle.confirmTxt} CONFIRMAR </Text>
+        <Text style={estilos.ReservaStyle.confirmTxt2} >{'Valor Total'+ Confirma() + '$'}</Text>
+        <TouchableHighlight style ={estilos.ReservaStyle.confirmButton} onPress={() => Finalizar(Number(Confirma()))}>
+          <Text style={estilos.ReservaStyle.confirmTxt}>  CONFIRMAR </Text>
         </TouchableHighlight>
 
       </Modal>
